@@ -1,0 +1,15 @@
+{
+	"manifest_version": 3,
+	"name": "Lunar Tab",
+	"version": "0.1.0",
+	"description": "A new tab page with smart search - uses Google/DuckDuckGo when available, otherwise fallback engine",
+	"chrome_url_overrides": {
+		"newtab": "index.html"
+	},
+	"host_permissions": [
+		"https://www.google.com/",
+		"https://www.bing.com/",
+		"https://www.baidu.com/",
+		"https://duckduckgo.com/"
+	]
+}
