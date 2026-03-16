@@ -5,7 +5,6 @@ import { useSettings } from "@/context/settings-context";
 
 export function Settings() {
 	const [isOpen, setIsOpen] = useState(false);
-	const [isHovered, setIsHovered] = useState(false);
 	const [isFocused, setIsFocused] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const { settings, updateSettings } = useSettings();
@@ -29,24 +28,16 @@ export function Settings() {
 		};
 	}, [isOpen]);
 
-	const buttonBgColor = isFocused
-		? THEME_COLORS.bg
-		: isHovered
-			? THEME_COLORS.surface
-			: THEME_COLORS.bgSecondary;
-
 	return (
 		<div ref={containerRef} className="fixed top-4 right-4 z-50">
 			<button
 				onClick={() => setIsOpen(!isOpen)}
-				onMouseEnter={() => setIsHovered(true)}
-				onMouseLeave={() => setIsHovered(false)}
 				onFocus={() => setIsFocused(true)}
 				onBlur={() => setIsFocused(false)}
 				className="p-2 transition rounded-lg"
 				style={{
 					color: THEME_COLORS.fg,
-					backgroundColor: buttonBgColor,
+					backgroundColor: THEME_COLORS.bgSecondary,
 					outline: isFocused ? `4px solid ${THEME_COLORS.accent}` : "none",
 				}}
 				title="设置"

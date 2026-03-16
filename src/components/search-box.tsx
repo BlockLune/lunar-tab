@@ -5,7 +5,6 @@ import { performSearch } from "@/utils/search";
 
 export function SearchBox() {
 	const [query, setQuery] = useState("");
-	const [isHovered, setIsHovered] = useState(false);
 	const [isFocused, setIsFocused] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { settings } = useSettings();
@@ -22,16 +21,8 @@ export function SearchBox() {
 		}
 	};
 
-	const backgroundColor = isFocused
-		? THEME_COLORS.bgSecondary
-		: isHovered
-			? THEME_COLORS.surface
-			: THEME_COLORS.bgSecondary;
-
 	return (
 		<form
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
 			onSubmit={handleSubmit}
 			className="w-full max-w-[600px]"
 		>
@@ -50,9 +41,9 @@ export function SearchBox() {
 				placeholder="搜索..."
 				autoComplete="off"
 				autoFocus
-				className="w-full px-6 py-4 text-lg border-none outline-none transition rounded-lg"
+				className="w-full px-6 py-4 text-lg border-none outline-none rounded-lg transition"
 				style={{
-					backgroundColor,
+					backgroundColor: THEME_COLORS.bgSecondary,
 					color: THEME_COLORS.fg,
 					outline: isFocused ? `4px solid ${THEME_COLORS.accent}` : "none",
 				}}
